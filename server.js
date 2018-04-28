@@ -2,6 +2,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+/* Declare variables for routes */
+const users = require("./routes/api/users");
+const profile = require("./routes/api/profile");
+const posts = require("./routes/api/posts");
+
 /* Declare an "app" variable  for express */
 const app = express();
 
@@ -16,6 +21,11 @@ mongoose
 
 /* Index Route */
 app.get("/", (req, res) => res.send("Welcome to Express"));
+
+/* Use Routes */
+app.use("/api/users", users);
+app.use("/api/profile", profile);
+app.use("/api/posts", posts);
 
 /* Declare "dev" and "prod" port */
 const port = process.env.PORT || 4000;
