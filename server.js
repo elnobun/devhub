@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 /* Declare an "app" variable  for express */
 const app = express();
 
+/* Index Route */
+app.get("/", (req, res) => res.send("Welcome to Express"));
+
 /* Database configuration */
 const db = require("./config/keys").mongoURI;
 
@@ -13,9 +16,6 @@ mongoose
   .connect(db)
   .then(() => console.log("Connected to database"))
   .catch(err => console.log(err));
-
-/* Index Route */
-app.get("/", (req, res) => res.send("Welcome to Express"));
 
 /* Declare "dev" and "prod" port */
 const port = process.env.PORT || 4000;
