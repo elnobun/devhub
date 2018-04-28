@@ -1,6 +1,7 @@
 /* Import modules */
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 /* Declare variables for routes */
 const users = require("./routes/api/users");
@@ -9,6 +10,10 @@ const posts = require("./routes/api/posts");
 
 /* Declare an "app" variable  for express */
 const app = express();
+
+/* Body Parser middleware */
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 /* Database configuration */
 const db = require("./config/keys").mongoURI;
