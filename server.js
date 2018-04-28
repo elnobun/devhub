@@ -1,8 +1,18 @@
 /* Import modules */
 const express = require("express");
+const mongoose = require("mongoose");
 
 /* Declare an "app" variable  for express */
 const app = express();
+
+/* Database configuration */
+const db = require("./config/keys").mongoURI;
+
+/* Connect to mongodb */
+mongoose
+  .connect(db)
+  .then(() => console.log("Connected to database"))
+  .catch(err => console.log(err));
 
 /* Index Route */
 app.get("/", (req, res) => res.send("Welcome to Express"));
