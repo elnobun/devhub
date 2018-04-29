@@ -1,10 +1,12 @@
-/* Import module */
+/* Import modules */
 const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-/* Import User model */
+/* Import files */
+const secretKey = require("../../config/keys").secretOrKey;
 const User = require("../../models/User");
 
 /*
@@ -54,6 +56,41 @@ router.post("/register", (req, res) => {
         });
       });
     }
+  });
+});
+
+/*
+ * @method POST
+ * @return  /api/users/login
+ * @description Login User / Return JWT token
+ * @access  PUBLIC
+ */
+router.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // Check if the user already exist through their email
+  User.findOne({ email }).then(user => {
+    if (!user) {
+      return res.status(404).json({ msg: "user not found" });
+    }
+    // Check if passowrd is the same as the one in database.
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // If user match,
+        // 1. Create a payload
+        // 2. Sign Token
+        const paylod = { id: user.id, name: user.name, avatar: user.avatar };
+        jwt.sign(paylod, secretKey, { expiresIn: 172800 }, (err, token) => {
+          res.json({
+            success: true,
+            token: "Bearer " + token
+          });
+        });
+      } else {
+        return res.status(400).json({ msg: "email or passowrd is incorrect" });
+      }
+    });
   });
 });
 
