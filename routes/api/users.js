@@ -8,16 +8,18 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 
 /*
- * @method:       GET: [ api/users/home ]
- * @description:  Users home route
- * @access:       PUBLIC
+ * @method  GET
+ * @return  /api/users/test
+ * @description Testing user route
+ * @access  PUBLIC
  */
 router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
 
 /*
- * @method:       POST: [ api/users/register ]
- * @description:  Register Users to the database
- * @access:       PUBLIC
+ * @method: POST
+ * @return  /api/users/test
+ * @description Register Users to the database
+ * @access  PUBLIC
  */
 router.post("/register", (req, res) => {
   // Check if user email already exist in the database
