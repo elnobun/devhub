@@ -29,9 +29,9 @@ router.post("/register", (req, res) => {
       // of the user avatar. It uses gravatar to extract the users profile pic
       // that already exist through a previous login like google, etc.
       const avatar = gravatar.url(req.body.email, {
-        s: "200",
-        r: "pg",
-        d: "mm"
+        s: "200", // size
+        r: "pg", // rating
+        d: "mm" // default
       });
       // Create a new Instance of user to the database
       const newUser = new User({
