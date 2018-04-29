@@ -9,7 +9,7 @@ const User = require("../../models/User");
 
 /*
  * @method:       GET api/users/home
- * @description:  Tests Users route
+ * @description:  Users home route
  * @access:       PUBLIC Route
  */
 router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
