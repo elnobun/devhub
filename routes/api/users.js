@@ -16,7 +16,7 @@ const User = require("../../models/User");
 router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
 
 /*
- * @method: POST
+ * @method POST
  * @return  /api/users/test
  * @description Register Users to the database
  * @access  PUBLIC
