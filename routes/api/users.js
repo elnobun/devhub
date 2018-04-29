@@ -10,18 +10,18 @@ const secretKey = require("../../config/keys").secretOrKey;
 const User = require("../../models/User");
 
 /*
- * @method  GET
- * @return  /api/users/test
- * @description Testing user route
- * @access  PUBLIC
+ * @method:  GET
+ * @return:  /api/users/test
+ * @description: Testing user route
+ * @access:  PUBLIC
  */
 router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
 
 /*
- * @method POST
- * @return  /api/users/test
- * @description Register Users to the database
- * @access  PUBLIC
+ * @method: POST
+ * @return:  /api/users/test
+ * @description: Register Users to the database
+ * @access:  PUBLIC
  */
 router.post("/register", (req, res) => {
   // Check if user email already exist in the database
@@ -60,10 +60,10 @@ router.post("/register", (req, res) => {
 });
 
 /*
- * @method POST
- * @return  /api/users/login
- * @description Login User / Return JWT token
- * @access  PUBLIC
+ * @method: POST
+ * @return:  /api/users/login
+ * @description: Login User / Return JWT token
+ * @access:  PUBLIC
  */
 router.post("/login", (req, res) => {
   const email = req.body.email;
