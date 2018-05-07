@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
         jwt.sign(paylod, secretKey, { expiresIn: 172800 }, (err, token) => {
           res.json({
             success: true,
-            token: "Bearer " + token
+            token: `Bearer ${token}`
           });
         });
       } else {
