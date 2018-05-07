@@ -36,7 +36,7 @@ router.post("/register", (req, res) => {
   // Check if user email already exist in the database
   User.findOne({ email: req.body.email }).then(email => {
     if (email) {
-      return res.status(400).json((errors.email = "email already exist"));
+      return res.status(400).json((errors.email = "Email already exist"));
     } else {
       // Create an avatar variable, that details the size, rating and default
       // of the user avatar. It uses gravatar to extract the users profile pic
