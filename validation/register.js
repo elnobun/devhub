@@ -8,7 +8,6 @@ module.exports = registerValidation = data => {
   let errors = {};
 
   dataFields = ["name", "email", "password", "confirmPassword"];
-
   dataFields.forEach(field => {
     data[field] = !isEmpty(data[field]) ? data[field] : "";
     // Fields should not be empty
