@@ -15,20 +15,6 @@ module.exports = loginValidation = data => {
     if (validator.isEmpty(data[field])) {
       errors[field] = `${field} is required`;
     }
-
-    // // Email should be valid
-    // if (data.email) {
-    //   if (!validator.isEmail(data.email)) {
-    //     errors.email = "Incorrect email or password";
-    //   }
-    // }
-    //
-    // // Password should have at least 6 characters
-    // if (data.password) {
-    //   if (!validator.isLength(data.password)) {
-    //     errors.password = "Incorrect email or password";
-    //   }
-    // }
   });
 
   return {
