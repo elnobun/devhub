@@ -4,7 +4,8 @@ const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+/* Import Passport*/
+const passport = require("passport");
 /* Import files */
 const secretKey = require("../../config/keys").secretOrKey;
 const User = require("../../models/User");
@@ -93,6 +94,26 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+/*
+ * @method: GET
+ * @return:  /api/users/current
+ * @description: Return current user else unauthorized
+ * @access:  PRIVATE
+ */
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    // Destructure the jwt content
+    const { id, name, email } = req.user;
+    res.json({
+      id,
+      name,
+      email
+    });
+  }
+);
 
 /* export router module */
 module.exports = router;
