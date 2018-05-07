@@ -11,6 +11,7 @@ module.exports = loginValidation = data => {
 
   dataFields.forEach(field => {
     data[field] = !isEmpty(data[field]) ? data[field] : "";
+
     // Fields should not be empty
     if (validator.isEmpty(data[field])) {
       errors[field] = `${field} is required`;
