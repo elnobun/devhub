@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 /* Declare variables for routes */
 const users = require("./routes/api/users");
@@ -24,8 +25,9 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch(err => console.log(err));
 
-/* Index Route */
-app.get("/", (req, res) => res.send("Welcome to Express"));
+/* Passport MiddleWare / Configuration */
+app.use(passport.initialize());
+require("./config/passport")(passport);
 
 /* Use Routes */
 app.use("/api/users", users);
