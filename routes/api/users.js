@@ -6,6 +6,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 /* Import Passport*/
 const passport = require("passport");
+/* Import registration validator */
+const validateRegistration = require("../../validation/register");
 /* Import files */
 const secretKey = require("../../config/keys").secretOrKey;
 const User = require("../../models/User");
@@ -25,10 +27,16 @@ router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
  * @access:  PUBLIC
  */
 router.post("/register", (req, res) => {
+  // Validate user registeration
+  const { errors, isValid } = validateRegistration(req.body);
+  // Check validation for name & email
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   // Check if user email already exist in the database
   User.findOne({ email: req.body.email }).then(email => {
     if (email) {
-      return res.status(400).json({ email: "email already exist" });
+      return res.status(400).json((errors.email = "email already exist"));
     } else {
       // Create an avatar variable, that details the size, rating and default
       // of the user avatar. It uses gravatar to extract the users profile pic
