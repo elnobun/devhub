@@ -4,7 +4,12 @@ const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+/* Import Passport*/
+const passport = require("passport");
+/* Import registration validator */
+const validateRegistration = require("../../validation/register");
+/* Import Login validator */
+const validateLogin = require("../../validation/login");
 /* Import files */
 const secretKey = require("../../config/keys").secretOrKey;
 const User = require("../../models/User");
@@ -24,10 +29,16 @@ router.get("/test", (req, res) => res.json({ msg: "Users Page" }));
  * @access:  PUBLIC
  */
 router.post("/register", (req, res) => {
+  // Validate user registeration
+  const { errors, isValid } = validateRegistration(req.body);
+  // Check validation for name & email
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   // Check if user email already exist in the database
   User.findOne({ email: req.body.email }).then(email => {
     if (email) {
-      return res.status(400).json({ email: "email already exist" });
+      return res.status(400).json({EmailError: "email already exist"});
     } else {
       // Create an avatar variable, that details the size, rating and default
       // of the user avatar. It uses gravatar to extract the users profile pic
@@ -66,13 +77,20 @@ router.post("/register", (req, res) => {
  * @access:  PUBLIC
  */
 router.post("/login", (req, res) => {
+  // Validate user login
+  const { errors, isValid } = validateLogin(req.body);
+  // Check validation for name & email
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
   // Check if the user already exist through their email
   User.findOne({ email }).then(user => {
     if (!user) {
-      return res.status(404).json({ msg: "user not found" });
+      return res.status(404).json({ LoginError: "email or password is incorrect" });
     }
     // Check if passowrd is the same as the one in database.
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -88,11 +106,31 @@ router.post("/login", (req, res) => {
           });
         });
       } else {
-        return res.status(400).json({ msg: "email or passowrd is incorrect" });
+        return res.status(400).json({ LoginError: "email or password is incorrect" });
       }
     });
   });
 });
+
+/*
+ * @method: GET
+ * @return:  /api/users/current
+ * @description: Return current user else unauthorized
+ * @access:  PRIVATE
+ */
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    // Destructure the jwt content
+    const { id, name, email } = req.user;
+    res.json({
+      id,
+      name,
+      email
+    });
+  }
+);
 
 /* export router module */
 module.exports = router;
