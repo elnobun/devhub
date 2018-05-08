@@ -121,4 +121,4 @@ const ProfileSchema = new Schema({
 });
 
 const Profile = mongoose.model("profile", ProfileSchema);
-mongoose.exports = Profile;
+module.exports = Profile;
