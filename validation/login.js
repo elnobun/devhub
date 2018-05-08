@@ -17,7 +17,7 @@ module.exports = loginValidation = data => {
       errors[field] = `${field} is required`;
     }
   });
-
+  //return
   return {
     errors,
     isValid: isEmpty(errors)
