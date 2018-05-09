@@ -37,7 +37,7 @@ router.get(
             .json({ NoProfile: "user currently has no profile" });
         }
         // If profile exist, send profile
-        res.json(profile);
+        return res.json(profile);
       })
       .catch(err => res.status(404).json(err));
   }
@@ -116,9 +116,10 @@ router.post(
             return res
               .status(400)
               .json({ handleError: "handle already exist" });
+          } else {
+            // Create and/or save user profile to the database
+            new Profile(profileFields).save().then(profile => res.json(profile));
           }
-          // Create and/or save user profile to the database
-          new Profile(profileFields).save().then(profile => res.json(profile));
         });
       }
     });
