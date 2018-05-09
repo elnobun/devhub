@@ -28,11 +28,12 @@ router.get(
   (req, res) => {
     // Find user
     Profile.findOne({ user: req.user.id })
+      .populate('user', ['name', 'avatar'])
       .then(profile => {
         // Check if user has a profile.
         if (!profile) {
           return res
-            .status(400)
+            .status(404)
             .json({ NoProfile: "user currently has no profile" });
         }
         // If profile exist, send profile
