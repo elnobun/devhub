@@ -273,11 +273,11 @@ router.delete(
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         // Retrieve experience to remove
-        profile.experience.pull({ _id: req.params.experience_id });
+        profile.experience.remove({ _id: req.params.experience_id });
         // Save the updated profile
         profile
           .save()
-          .then(profile => res.json(profile.experience))
+          .then(profile => res.json(profile))
           .catch(err =>
             res.status(404).json({
               valueError: (err.message =
@@ -303,11 +303,11 @@ router.delete(
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         // Retrieve experience to remove
-        profile.education.pull({ _id: req.params.education_id });
+        profile.education.remove({ _id: req.params.education_id });
         // Save the updated profile
         profile
           .save()
-          .then(profile => res.json(profile.education))
+          .then(profile => res.json(profile))
           .catch(err =>
             res.status(404).json({
               valueError: (err.message =
@@ -337,6 +337,8 @@ router.delete(
     });
   }
 );
+
+
 
 /* export router module */
 module.exports = router;
