@@ -4,8 +4,11 @@
   "description": "Developers Community Network Application",
   "main": "server.js",
   "scripts": {
+    "client-install": "cd client && yarn install",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently -n \"server,client\" -c \"green,blue\" \"yarn run server\" \"yarn run client\""
   },
   "repository": "https://github.com/elnobun/devhub.git",
   "author": "Ellis Enobun <elnobun@gmail.com>",
@@ -13,6 +16,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
     "express": "^4.16.3",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.2.1",
