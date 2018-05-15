@@ -165,7 +165,7 @@ materialKit = {
         $('.navbar-color-on-scroll').addClass('navbar-transparent');
       }
     }
-  }, 17)
+  }, 1)
 };
 
 // Returns a function, that, as long as it continues to be invoked, will not
