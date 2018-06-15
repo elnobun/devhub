@@ -105,9 +105,7 @@ class Login extends Component {
                 ©
                 <script>document.write(new Date().getFullYear())</script>2018,
                 made with <i className="fa fa-heart heart" /> by
-                <a href="">
-                  Creative Tim
-                </a>
+                <a href="">Creative Tim</a>
               </div>
             </div>
           </footer>
