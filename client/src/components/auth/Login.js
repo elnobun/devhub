@@ -5,7 +5,12 @@ import Navbar from "../layout/Navbar";
 
 class Login extends Component {
   render() {
-    return <div>Login Page</div>;
+    return (
+      <div>
+        <Navbar />
+        <div>Login Page</div>
+      </div>
+    );
   }
 }
 
