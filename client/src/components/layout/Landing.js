@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -18,10 +19,10 @@ const Landing = () => {
                 Connecting developers with different skill sets.
               </h2>
               <br />
-              <a className="btn btn-danger btn-raised btn-lg">
+              <Link to="" className="btn btn-danger btn-raised btn-lg">
                 <i className="fa fa-play" /> Connect
                 <div className="ripple-container" />
-              </a>
+              </Link>
             </div>
 
             <div className="col-md-6 text-center">

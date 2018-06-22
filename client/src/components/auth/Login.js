@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Footer from "../layout/Footer";
-// import Navbar from "../layout/Navbar";
+import { Link } from "react-router-dom";
 
 // import PropTypes from 'prop-types';
 
@@ -10,7 +9,6 @@ class Login extends Component {
       <div className="login-page">
         <div
           className="page-header header-filter clear-filter"
-          data-parallax="true"
           style={{
             backgroundColor: "rgb(41, 75, 128)",
             transform: "translate3d(0, 0, 0)"
@@ -27,12 +25,12 @@ class Login extends Component {
                         <div className="btn btn-just-icon btn-link">
                           <i className="fab fa-facebook-square" />
                         </div>
-                        <a href="#pablo" className="btn btn-just-icon btn-link">
+                        <Link to="" className="btn btn-just-icon btn-link">
                           <i className="fab fa-twitter" />
-                        </a>
-                        <a href="#pablo" className="btn btn-just-icon btn-link">
+                        </Link>
+                        <Link to="" className="btn btn-just-icon btn-link">
                           <i className="fab fa-google-plus" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <p className="description text-center">Or Be Classical</p>
@@ -71,12 +69,12 @@ class Login extends Component {
                       </span>
                     </div>
                     <div className="footer text-center">
-                      <a
-                        href="#pablo"
+                      <Link
+                        to=""
                         className="btn btn-primary btn-link btn-wd btn-lg"
                       >
                         Get Started
-                      </a>
+                      </Link>
                     </div>
                   </form>
                 </div>
