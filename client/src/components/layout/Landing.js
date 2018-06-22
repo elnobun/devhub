@@ -1,12 +1,8 @@
 import React from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 
 const Landing = () => {
   return (
     <div className="landing-page">
-      <Navbar />
-
       <div
         className="page-header header-filter clear-filter"
         data-parallax="true"
@@ -18,18 +14,18 @@ const Landing = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <h1 className="title">The Developers Hub.</h1>
-              <h4>
-                Every landing page needs a small description after the big bold
-                title, that's why we added this text here. Add here all the
-                information that can make you or your product create the first
-                impression.
-              </h4>
+              <h2 className="title">
+                Connecting developers with different skill sets.
+              </h2>
               <br />
               <a className="btn btn-danger btn-raised btn-lg">
-                <i className="fa fa-play" /> Watch video
+                <i className="fa fa-play" /> Connect
                 <div className="ripple-container" />
               </a>
+            </div>
+
+            <div className="col-md-6 text-center">
+              <h4 className="title">Image here</h4>
             </div>
           </div>
         </div>
@@ -96,7 +92,6 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

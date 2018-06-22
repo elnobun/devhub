@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <nav
-      className="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent"
+      className="navbar fixed-top navbar-expand-lg"
       color-on-scroll="100"
       id="sectionsNav"
     >
@@ -30,10 +30,7 @@ const Navbar = () => {
               </a>
             </li>
             <li className="button-container nav-item iframe-extern">
-              <a
-                href=""
-                className="btn  btn-rose   btn-round btn-block"
-              >
+              <a href="" className="btn  btn-rose   btn-round btn-block">
                 <i className="material-icons">person_add</i> Sign Up
               </a>
             </li>
