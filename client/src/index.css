@@ -16,6 +16,10 @@ body {
   font-family: CamphorPro-Regular, Open Sans, Segoe UI, sans-serif;
 }
 
+input {
+  cursor: "auto";
+}
+
 /* Header Style */
 .header-filter .container {
   z-index: 2;
@@ -80,4 +84,9 @@ body {
 .title {
   font-weight: 300;
   font-family: CamphorPro-Regular, Open Sans, Segoe UI, sans-serif;
+}
+
+.page-bg {
+  background-color: rgb(41, 75, 128);
+  transform: translate3d(0, 0, 0);
 }
