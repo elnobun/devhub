@@ -1,3 +1,70 @@
-/*.input-group .input-group-text {*/
-  /*padding: 0 15px 0 0;*/
-/*}*/
+/* Header Style */
+.header-filter .container {
+  z-index: 2;
+  position: relative;
+}
+
+/*Landing Page Styles */
+.landing-page .navbar-transparent {
+  padding-top: 25px;
+}
+
+/* Login Page Style */
+.input-group .input-group-text {
+  padding: 0 10px 0 0;
+}
+
+.card-signup .card-header {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: -40px;
+  padding: 20px 0;
+  margin-bottom: 15px;
+}
+
+.card-signup .card-body {
+  padding: 0px 30px 0px 30px;
+}
+
+.auth-page .card-signup .card-header {
+  width: auto;
+}
+
+.auth-page .card-signup .input-group {
+  padding-bottom: 7px;
+  margin: 27px 0 0 0;
+}
+
+.login .navbar-transparent {
+  padding-top: 25px;
+}
+
+.auth-page .page-header {
+  min-height: 100vh;
+  height: auto;
+  display: inherit;
+}
+
+.auth-page .page-header .container {
+  padding-top: 25vh;
+}
+
+.auth-page .footer .container {
+  padding: 0;
+}
+
+.auth-page .footer .copyright,
+.auth-page .footer a {
+  color: white;
+}
+
+/* Miscallenaus CSS formatting */
+.title {
+  font-weight: 300;
+  font-family: CamphorPro-Regular, Open Sans, Segoe UI, sans-serif;
+}
+
+.page-bg {
+  background-color: rgb(41, 75, 128);
+  transform: translate3d(0, 0, 0);
+}

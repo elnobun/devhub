@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class Login extends Component {
   render() {
     return (
-      <div className="login-page">
+      <div className="auth-page">
         <div
           className="page-header header-filter clear-filter"
           style={{
