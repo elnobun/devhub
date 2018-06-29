@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar fixed-top navbar-expand-lg"
-      color-on-scroll="100"
-      id="sectionsNav"
-    >
+    <nav className="navbar fixed-top navbar-expand-lg">
       <div className="container">
         <div className="navbar-translate">
           <Link to="/" className="navbar-brand">
