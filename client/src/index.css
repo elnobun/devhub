@@ -48,11 +48,11 @@ input {
   padding: 0px 30px 0px 30px;
 }
 
-.login-page .card-signup .card-header {
+.auth-page .card-signup .card-header {
   width: auto;
 }
 
-.login-page .card-signup .input-group {
+.auth-page .card-signup .input-group {
   padding-bottom: 7px;
   margin: 27px 0 0 0;
 }
@@ -61,22 +61,22 @@ input {
   padding-top: 25px;
 }
 
-.login-page .page-header {
+.auth-page .page-header {
   min-height: 100vh;
   height: auto;
   display: inherit;
 }
 
-.login-page .page-header .container {
+.auth-page .page-header .container {
   padding-top: 25vh;
 }
 
-.login-page .footer .container {
+.auth-page .footer .container {
   padding: 0;
 }
 
-.login-page .footer .copyright,
-.login-page .footer a {
+.auth-page .footer .copyright,
+.auth-page .footer a {
   color: white;
 }
 

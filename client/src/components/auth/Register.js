@@ -31,7 +31,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="login-page">
+      <div className="auth-page">
         <div className="page-header header-filter clear-filter page-bg">
           <div className="container">
             <div className="row">
