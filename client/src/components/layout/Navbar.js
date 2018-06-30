@@ -25,7 +25,7 @@ const Navbar = () => {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to="/profiles" className="nav-link">
-                Meet Ups
+                Developers
               </Link>
             </li>
           </ul>

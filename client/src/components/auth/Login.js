@@ -4,6 +4,28 @@ import { Link } from "react-router-dom";
 // import PropTypes from 'prop-types';
 
 class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+    errors: {}
+  };
+
+  // Onchange event function
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  // Onsubmit event function
+  onSubmit = e => {
+    e.preventDefault();
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    console.log(user);
+  };
+
   render() {
     return (
       <div className="auth-page">
@@ -18,7 +40,7 @@ class Login extends Component {
             <div className="row">
               <div className="col-md-4 col-sm-6 ml-auto mr-auto">
                 <div className="card card-signup">
-                  <form className="form" method="" action="">
+                  <form className="form" onSubmit={this.onSubmit}>
                     <div className="card-header card-header-primary text-center card-signup">
                       <h4 className="card-title">Log in</h4>
                       <div className="social-line">
@@ -44,10 +66,12 @@ class Login extends Component {
                           </div>
                           <input
                             type="email"
-                            className="form-control"
+                            name="email"
+                            className="input form-control"
                             placeholder="Email..."
                             autoComplete="off"
-                            style={{ cursor: "auto" }}
+                            value={this.state.email}
+                            onChange={this.onChange}
                           />
                         </div>
                       </span>
@@ -60,10 +84,12 @@ class Login extends Component {
                           </div>
                           <input
                             type="password"
-                            className="form-control"
+                            name="password"
+                            className="input form-control"
                             placeholder="Password..."
                             autoComplete="off"
-                            style={{ cursor: "auto" }}
+                            value={this.state.password}
+                            onChange={this.onChange}
                           />
                         </div>
                       </span>

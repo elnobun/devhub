@@ -68,3 +68,34 @@
   background-color: rgb(41, 75, 128);
   transform: translate3d(0, 0, 0);
 }
+
+.register {
+  background-color: rgb(41, 75, 128);
+  color: white;
+  display: inherit;
+  height: auto;
+  min-height: 100vh;
+  padding-top: 20vh;
+  line-height: 1.5px;
+}
+
+.register .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .footer {
+  padding: 0.9375rem 0;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+
+  border: 0;
+  padding: 0.625rem 0;
+  margin-bottom: 20px;
+  color: #555;
+  background-color: #fff !important;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+    0 7px 10px -5px rgba(0, 0, 0, 0.15);
+} */
