@@ -6,7 +6,6 @@ class LoginForm extends Component {
   state = {
     email: "",
     password: "",
-    confirmPassword: "",
     errors: {}
   };
 
@@ -20,10 +19,8 @@ class LoginForm extends Component {
     e.preventDefault();
 
     const user = {
-      name: this.state.name,
       email: this.state.email,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      password: this.state.password
     };
     console.log(user);
   };
@@ -62,24 +59,6 @@ class LoginForm extends Component {
               placeholder="Password..."
               name="password"
               value={this.state.password}
-              onChange={this.onChangeHandler}
-            />
-          </div>
-        </div>
-
-        <div className="form-group bmd-form-group">
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">lock_outline</i>
-              </span>
-            </div>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Confirm Password..."
-              name="confirmPassword"
-              value={this.state.confirmPassword}
               onChange={this.onChangeHandler}
             />
           </div>

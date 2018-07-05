@@ -11,11 +11,11 @@ const Login = () => {
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">
             <div className="card">
-              <h2 className="card-title text-center">Create an Account</h2>
+              <h2 className="card-title text-center">Login</h2>
+              <p className="lead text-center">Sign in to your account</p>
               <div className="card-body">
                 <div className="row">
-                  <div className="col-md-5 ml-auto">More info here soon</div>
-                  <div className="col-md-5 mr-auto">
+                  <div className="col-md-5 m-auto">
                     <LoginForm />
                   </div>
                 </div>

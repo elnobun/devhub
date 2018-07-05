@@ -11,7 +11,10 @@ const Register = () => {
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">
             <div className="card">
-              <h2 className="card-title text-center">Create an Account</h2>
+              <h2 className="card-title text-center">Sign Up</h2>
+              <p className="lead text-center mt-2">
+                Create your devHub account
+              </p>
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-5 ml-auto">More info here soon</div>
