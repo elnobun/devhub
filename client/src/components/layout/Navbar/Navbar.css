@@ -1,0 +1,31 @@
+/* .main-header {
+  background-color: white;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+    0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  z-index: 1000;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 0 0.75em;
+  height: 10vh;
+  margin-bottom: 0;
+}
+
+.nav-title {
+  font-size: 1rem;
+}
+.nav-links ul {
+  display: flex;
+}
+
+li {
+  padding: 0.75em;
+}
+
+li a {
+  color: rgb(62, 57, 71);
+} */

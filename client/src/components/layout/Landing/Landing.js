@@ -1,16 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Landing.css";
 
 const Landing = () => {
   return (
-    <div className="landing-page">
+    <div className="landing">
       <div
-        className="page-header header-filter clear-filter"
+        className="page-header header-filter clear-filter bg"
         data-parallax="true"
-        style={{
-          backgroundColor: "rgb(41, 75, 128)",
-          transform: "translate3d(0, 0, 0)"
-        }}
       >
         <div className="container">
           <div className="row">
@@ -26,7 +23,10 @@ const Landing = () => {
             </div>
 
             <div className="col-md-6 text-center">
-              <h4 className="title">Image here</h4>
+              <div className="card">Hey</div>
+              <div className="card">Hey</div>
+              <div className="card">Hey</div>
+              <div className="card">Hey</div>
             </div>
           </div>
         </div>
@@ -42,8 +42,8 @@ const Landing = () => {
                   This is the paragraph where you can write more details about
                   your product. Keep you user engaged by providing meaningful
                   information. Remember that by this time, the user is curious,
-                  otherwise he wouldn&apos;t scroll to get here. Add a button if
-                  you want the user to see more.
+                  otherwise he wouldnt scroll to get here. Add a button if you
+                  want the user to see more.
                 </h5>
               </div>
             </div>

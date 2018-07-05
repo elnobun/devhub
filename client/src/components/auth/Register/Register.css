@@ -1,0 +1,26 @@
+/* .register {
+  background-color: rgb(41, 75, 128);
+  color: white;
+  display: inherit;
+  height: auto;
+  min-height: 100vh;
+  padding-top: 20vh;
+  line-height: 1.5px;
+}
+
+.register::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 65%;
+  width: 50%;
+  height: 100%;
+  background: #03a9f4;
+  opacity: 0.8;
+}
+
+.register .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */

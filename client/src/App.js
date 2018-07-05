@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Route } from "react-router-dom";
-import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+import Landing from "./components/layout/Landing/Landing";
+import Register from "./components/auth/Register/Register";
+import Login from "./components/auth/Login/Login";
+import Navbar from "./components/layout/Navbar/Navbar";
+import Footer from "./components/layout/Footer/Footer";
 import "./App.css";
 
 class App extends Component {

@@ -1,0 +1,9 @@
+.landing .bg {
+  background-color: rgb(41, 75, 128);
+  transform: translate3d(0, 0, 0);
+}
+
+.landing .title {
+  font-family: CamphorPro-Regular, Open Sans, Segoe UI, sans-serif;
+  font-weight: 100;
+}
