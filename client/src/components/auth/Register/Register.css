@@ -1,14 +1,14 @@
-/* .register {
+.register {
   background-color: rgb(41, 75, 128);
   color: white;
   display: inherit;
   height: auto;
   min-height: 100vh;
-  padding-top: 20vh;
+  padding-top: 10vh;
   line-height: 1.5px;
 }
 
-.register::before {
+/* .register::before {
   content: "";
   position: absolute;
   top: 0;
@@ -17,10 +17,8 @@
   height: 100%;
   background: #03a9f4;
   opacity: 0.8;
-}
-
-.register .card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 } */
+
+.register .card {
+  padding: 40px 0;
+}

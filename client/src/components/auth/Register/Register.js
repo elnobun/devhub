@@ -9,16 +9,16 @@ const Register = () => {
     <div className="register">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 m-auto">
+          <div className="col-md-10 ml-auto mr-auto">
             <div className="card">
-              <div className="card-header card-header-icon card-header-primary">
-                <h4 className="card-title">Create an Account</h4>
-                <div className="card-icon">
-                  <i className="material-icons">assignment</i>
-                </div>
-              </div>
+              <h2 className="card-title text-center">Create an Account</h2>
               <div className="card-body">
-                <RegisterForm />
+                <div className="row">
+                  <div className="col-md-5 ml-auto">More info here soon</div>
+                  <div className="col-md-5 mr-auto">
+                    <RegisterForm />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

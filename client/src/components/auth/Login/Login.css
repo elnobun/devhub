@@ -1,0 +1,13 @@
+.login {
+  background-color: rgb(41, 75, 128);
+  color: white;
+  display: inherit;
+  height: auto;
+  min-height: 100vh;
+  padding-top: 10vh;
+  line-height: 1.5px;
+}
+
+.login .card {
+  padding: 40px 0;
+}

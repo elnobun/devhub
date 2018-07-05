@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
-class RegisterForm extends Component {
+class LoginForm extends Component {
   // Initialize default state of the register form
 
   state = {
-    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -20,36 +19,18 @@ class RegisterForm extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
 
-    const newUser = {
+    const user = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
     };
-    console.log(newUser);
+    console.log(user);
   };
 
   render() {
     return (
       <form onSubmit={this.onSubmitHandler}>
-        <div className="form-group bmd-form-group">
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">group</i>
-              </span>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Name..."
-              name="name"
-              value={this.state.name}
-              onChange={this.onChangeHandler}
-            />
-          </div>
-        </div>
-
         <div className="form-group bmd-form-group">
           <div className="input-group">
             <div className="input-group-prepend">
@@ -108,11 +89,11 @@ class RegisterForm extends Component {
             type="submit"
             className="btn btn-primary btn-round text-center"
           >
-            Register
+            Login
           </button>
         </div>
       </form>
     );
   }
 }
-export default RegisterForm;
+export default LoginForm;
