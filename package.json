@@ -26,6 +26,9 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.4"
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "nodemon": "^1.17.4",
+    "prettier": "^1.13.7"
   }
 }
