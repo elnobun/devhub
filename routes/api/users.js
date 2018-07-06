@@ -38,7 +38,7 @@ router.post("/register", (req, res) => {
   // Check if user email already exist in the database
   User.findOne({ email: req.body.email }).then(email => {
     if (email) {
-      return res.status(400).json({EmailError: "email already exist"});
+      return res.status(400).json({ EmailError: "email already exist" });
     } else {
       // Create an avatar variable, that details the size, rating and default
       // of the user avatar. It uses gravatar to extract the users profile pic
@@ -90,7 +90,9 @@ router.post("/login", (req, res) => {
   // Check if the user already exist through their email
   User.findOne({ email }).then(user => {
     if (!user) {
-      return res.status(404).json({ LoginError: "email or password is incorrect" });
+      return res
+        .status(404)
+        .json({ LoginError: "email or password is incorrect" });
     }
     // Check if passowrd is the same as the one in database.
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -106,7 +108,9 @@ router.post("/login", (req, res) => {
           });
         });
       } else {
-        return res.status(400).json({ LoginError: "email or password is incorrect" });
+        return res
+          .status(400)
+          .json({ LoginError: "email or password is incorrect" });
       }
     });
   });
