@@ -4,7 +4,7 @@
   display: inherit;
   height: auto;
   min-height: 100vh;
-  padding-top: 10vh;
+  padding-top: 8.5vh;
   line-height: 1.5px;
 }
 
@@ -21,4 +21,20 @@
 
 .register .card {
   padding: 40px 0;
+}
+
+element.style {
+  color: red;
+}
+
+.bmd-form-group.is-focused .bmd-help {
+  display: block;
+  padding: 10px;
+  position: absolute;
+  left: 45px;
+  top: 70px;
+}
+
+.bmd-help {
+  color: indianred !important;
 }
