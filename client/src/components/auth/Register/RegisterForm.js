@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { registeruser } from "../../../redux/actions/authActions";
+import { withRouter } from "react-router-dom";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 class RegisterForm extends Component {
   // Initialize default state of the register form
@@ -30,33 +33,40 @@ class RegisterForm extends Component {
       confirmPassword
     };
 
-    // Submit to database
-    axios
-      .post("/api/users/register", newUser)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => this.setState({ errors: err.response.data }));
+    // Submit to database, and redirect user to login page from redux
+    this.props.registeruser(newUser, this.props.history);
   };
+
+  /**
+   * Persist the redux error to the error object in component state.
+   * This lifecycle gets the props that is contained in the store,
+   * then matches it with the current error object in component state.
+   * @memberof RegisterForm
+   */
+  static getDerivedStateFromProps({ errors }) {
+    return {
+      errors
+    };
+  }
 
   // This function endables or disables submit button
   // based on the form state. This is to prevent users
   // from always clicking the submit button, which can
   // be heavey on the system.
-  canBeSubmitted = () => {
-    const { name, email, password, confirmPassword } = this.state;
-    return (
-      name.length > 0 &&
-      email.length > 0 &&
-      password.length > 0 &&
-      confirmPassword.length > 0
-    );
-  };
+  // canBeSubmitted = () => {
+  //   const { name, email, password, confirmPassword } = this.state;
+  //   return (
+  //     name.length > 0 &&
+  //     email.length > 0 &&
+  //     password.length > 0 &&
+  //     confirmPassword.length > 0
+  //   );
+  // };
 
   render() {
     const { errors } = this.state;
-    const isEnabled = this.canBeSubmitted();
-    // const disabled = disabled ? "disabled" : "";
+    // const isEnabled = this.canBeSubmitted();
+
     return (
       <form onSubmit={this.onSubmitHandler}>
         <div
@@ -159,7 +169,6 @@ class RegisterForm extends Component {
           <button
             type="submit"
             className="btn btn-primary btn-round text-center"
-            disabled={!isEnabled}
           >
             Register
           </button>
@@ -168,4 +177,22 @@ class RegisterForm extends Component {
     );
   }
 }
-export default RegisterForm;
+
+// PropTypes for Register Form
+RegisterForm.propTypes = {
+  registeruser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+// Get the auth state from the root reducer (redux/reducers)
+// to this Register component
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { registeruser }
+)(withRouter(RegisterForm));
