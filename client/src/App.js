@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Landing from "./components/layout/Landing/Landing";
 import Register from "./components/auth/Register/Register";
@@ -11,13 +11,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Fragment>
-          <Navbar />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Footer />
-        </Fragment>
+        <Navbar />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Footer />
       </div>
     );
   }

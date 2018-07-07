@@ -1,9 +1,14 @@
-.landing .bg {
+.splash {
+  padding: 12em 0 6em;
   background-color: rgb(41, 75, 128);
-  transform: translate3d(0, 0, 0);
+  /* background: linear-gradient(145deg, #349aed 50%, #34d8ed 100%); */
+  color: #fff;
+  text-align: center;
 }
 
-.landing .title {
-  font-family: CamphorPro-Regular, Open Sans, Segoe UI, sans-serif;
-  font-weight: 100;
-}
+/* .splash .container {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  top: auto;
+} */
