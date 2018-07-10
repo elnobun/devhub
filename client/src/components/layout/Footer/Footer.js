@@ -1,11 +1,14 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer id="footer">
       <div className="container">
-        <div className="copyright pull-right">
-          Copyright © {new Date().getFullYear()} DevHype
+        <div className="row">
+          <div className="col-lg-12 text-center">
+            <p>Copyright © {new Date().getFullYear()} DevHype</p>
+          </div>
         </div>
       </div>
     </footer>

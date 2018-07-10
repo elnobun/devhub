@@ -4,7 +4,7 @@
 }
 
 #home .navbar {
-  transition: box-shadow 200ms ease-in;
+  transition: 200ms ease-in !important;
 }
 
 #home .bg-primary {

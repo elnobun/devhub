@@ -19,3 +19,8 @@ body {
 input {
   cursor: "auto";
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+}

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { registeruser } from "../../../redux/actions/authActions";
+// import { connect } from "react-redux";
+// import { registerUser } from "../../../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
@@ -17,29 +18,39 @@ class RegisterForm extends Component {
   };
 
   // onChange Event function
+  // After errors are shown in the field, remove the error when typing.
   onChangeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    if (!!this.state.errors[e.target.name]) {
+      let errors = Object.assign({}, this.state.errors);
+      delete errors[e.target.name];
+      this.setState({ [e.target.name]: e.target.value, errors });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   };
 
   // onSubmit Event function
   onSubmitHandler = e => {
     e.preventDefault();
 
-    const { name, email, password, confirmPassword } = this.state;
+    const { name, email, password, confirmPassword, errors } = this.state;
     const newUser = {
       name,
       email,
       password,
       confirmPassword
     };
+    const isValid = Object.keys(errors).length === 0;
 
     // Submit to database, and redirect user to login page from redux
-    this.props.registeruser(newUser, this.props.history);
+    if (isValid) {
+      this.props.registerUser(newUser, this.props.history);
+    }
   };
 
   /**
    * Persist the redux error to the error object in component state.
-   * This lifecycle gets the props that is contained in the store,
+   * This lifecycle gets the error props that is contained in the store,
    * then matches it with the current error object in component state.
    * @memberof RegisterForm
    */
@@ -70,33 +81,32 @@ class RegisterForm extends Component {
     return (
       <form onSubmit={this.onSubmitHandler}>
         <div
-          className={classnames("form-group bmd-form-group", {
-            "is-focused has-danger": errors.name
+          className={classnames("form-group", {
+            "has-danger": errors.name
           })}
         >
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
-                <i className="material-icons">group</i>
+                <i className="material-icons">person</i>
               </span>
             </div>
             <input
               type="text"
-              className="form-control"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.name
+              })}
               placeholder="Name..."
               name="name"
               value={this.state.name}
               onChange={this.onChangeHandler}
             />
+            {errors.name && (
+              <span className="invalid-tooltip ml-4">{errors.name}</span>
+            )}
           </div>
-          {errors.name && <span className="bmd-help">*{errors.name}</span>}
         </div>
-
-        <div
-          className={classnames("form-group bmd-form-group", {
-            "is-focused has-danger": errors.email
-          })}
-        >
+        <div className="form-group">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -105,21 +115,20 @@ class RegisterForm extends Component {
             </div>
             <input
               type="email"
-              className="form-control"
-              placeholder="example@example.com"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.email
+              })}
+              placeholder="Email..."
               name="email"
               value={this.state.email}
               onChange={this.onChangeHandler}
             />
+            {errors.email && (
+              <span className="invalid-tooltip ml-4">{errors.email}</span>
+            )}
           </div>
-          {errors.email && <span className="bmd-help">*{errors.email}</span>}
         </div>
-
-        <div
-          className={classnames("form-group bmd-form-group", {
-            "is-focused has-danger": errors.password
-          })}
-        >
+        <div className="form-group">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -128,23 +137,15 @@ class RegisterForm extends Component {
             </div>
             <input
               type="password"
-              className="form-control"
+              className="form-control form-control-lg"
               placeholder="Password..."
               name="password"
               value={this.state.password}
               onChange={this.onChangeHandler}
             />
           </div>
-          {errors.password && (
-            <span className="bmd-help">*{errors.password}</span>
-          )}
         </div>
-
-        <div
-          className={classnames("form-group bmd-form-group", {
-            "is-focused has-danger": errors.confirmPassword
-          })}
-        >
+        <div className="form-group">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -153,25 +154,21 @@ class RegisterForm extends Component {
             </div>
             <input
               type="password"
-              className="form-control"
+              className="form-control form-control-lg"
               placeholder="Confirm Password..."
               name="confirmPassword"
               value={this.state.confirmPassword}
               onChange={this.onChangeHandler}
             />
           </div>
-          {errors.confirmPassword && (
-            <span className="bmd-help">*{errors.confirmPassword}</span>
-          )}
         </div>
-
-        <div className="text-center form-group bmd-form-group">
-          <button
-            type="submit"
-            className="btn btn-primary btn-round text-center"
-          >
+        <div className="from-group text-center ">
+          <button type="submit" className="btn btn-outline-primary mt-4">
             Register
           </button>
+          <p className="mt-5">
+            Already registered? Click <Link to="/login">Here</Link> to login
+          </p>
         </div>
       </form>
     );
@@ -180,19 +177,16 @@ class RegisterForm extends Component {
 
 // PropTypes for Register Form
 RegisterForm.propTypes = {
-  registeruser: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 // Get the auth state from the root reducer (redux/reducers)
 // to this Register component
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
+// const mapStateToProps = state => ({
+//   auth: state.auth,
+//   errors: state.errors
+// });
 
-export default connect(
-  mapStateToProps,
-  { registeruser }
-)(withRouter(RegisterForm));
+export default withRouter(RegisterForm);

@@ -1,45 +1,16 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./Landing.css";
+// import network from "../../images/network.jpg";
 
 const Landing = () => {
   return (
-    <div className="splash">
+    <div id="landing">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h1>Free themes for Bootstrap</h1>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
-            <div id="social">Hello</div>
+            <h1>Connecting Developers</h1>
+            <h4 className="ml-auto">Connect | Meet Up | Free Chat </h4>
           </div>
         </div>
       </div>

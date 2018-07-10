@@ -1,11 +1,16 @@
-.register {
-  background-color: rgb(41, 75, 128);
-  color: white;
+#register {
+  background: linear-gradient(rgba(4, 21, 48, 0.719), rgba(0, 0, 0, 0.89));
   display: inherit;
   height: auto;
   min-height: 100vh;
-  padding-top: 8.5vh;
+  /* padding-top: 8.5vh; */
   line-height: 1.5px;
+  padding: 8em 0 4em;
+}
+
+#register .btn {
+  border-radius: 50px;
+  width: 100px;
 }
 
 /* .register::before {
@@ -19,22 +24,22 @@
   opacity: 0.8;
 } */
 
-.register .card {
+/* .register .card {
   padding: 40px 0;
-}
+} */
 
-element.style {
+/* element.style {
   color: red;
-}
+} */
 
-.bmd-form-group.is-focused .bmd-help {
+/* .bmd-form-group.is-focused .bmd-help {
   display: block;
   padding: 10px;
   position: absolute;
   left: 45px;
   top: 70px;
-}
+} */
 
-.bmd-help {
+/* .bmd-help {
   color: indianred !important;
-}
+} */

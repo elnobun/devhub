@@ -6,7 +6,7 @@ import axios from "axios";
  * @param {Object} userData
  * @param {Location} history
  */
-export const registeruser = (userData, history) => dispatch => {
+export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login"))

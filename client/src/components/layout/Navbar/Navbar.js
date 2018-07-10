@@ -37,9 +37,11 @@ class Navbar extends Component {
       <div id="home">
         <nav
           ref="inner"
-          className={`navbar navbar-expand-lg fixed-top navbar-dark bg-primary ${
-            isEnabled ? "navbar-transparent" : ""
-          } `}
+          className={`${
+            isEnabled
+              ? "navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent"
+              : "navbar navbar-expand-lg fixed-top navbar-light bg-light"
+          }`}
         >
           <div className="container">
             <Link className="navbar-brand" to="/">
@@ -68,13 +70,13 @@ class Navbar extends Component {
 
               <ul className="nav navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    LOGIN
+                  <Link className="nav-link mr-auto icon" to="/login">
+                    <i className="material-icons">fingerprint</i>&nbsp; LOGIN
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/register">
-                    SIGNUP
+                  <Link className="nav-link icon" to="/register">
+                    <i className="material-icons">person_add</i>&nbsp; SIGNUP
                   </Link>
                 </li>
               </ul>
