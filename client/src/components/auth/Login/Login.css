@@ -1,13 +1,14 @@
-.login {
-  background-color: rgb(41, 75, 128);
-  color: white;
+#login {
+  background: linear-gradient(rgba(4, 21, 48, 0.719), rgba(0, 0, 0, 0.89));
   display: inherit;
   height: auto;
   min-height: 100vh;
-  padding-top: 20vh;
+  /* padding-top: 8.5vh; */
   line-height: 1.5px;
+  padding: 8em 0 4em;
 }
 
-.login .card {
-  padding: 40px 0;
+#login .btn {
+  border-radius: 50px;
+  width: 100px;
 }

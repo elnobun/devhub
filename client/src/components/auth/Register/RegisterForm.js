@@ -60,20 +60,6 @@ class RegisterForm extends Component {
     };
   }
 
-  // This function endables or disables submit button
-  // based on the form state. This is to prevent users
-  // from always clicking the submit button, which can
-  // be heavey on the system.
-  // canBeSubmitted = () => {
-  //   const { name, email, password, confirmPassword } = this.state;
-  //   return (
-  //     name.length > 0 &&
-  //     email.length > 0 &&
-  //     password.length > 0 &&
-  //     confirmPassword.length > 0
-  //   );
-  // };
-
   render() {
     const { errors } = this.state;
     // const isEnabled = this.canBeSubmitted();
@@ -106,7 +92,11 @@ class RegisterForm extends Component {
             )}
           </div>
         </div>
-        <div className="form-group">
+        <div
+          className={classnames("form-group", {
+            "has-danger": errors.name
+          })}
+        >
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -128,7 +118,12 @@ class RegisterForm extends Component {
             )}
           </div>
         </div>
-        <div className="form-group">
+
+        <div
+          className={classnames("form-group", {
+            "has-danger": errors.name
+          })}
+        >
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -143,9 +138,17 @@ class RegisterForm extends Component {
               value={this.state.password}
               onChange={this.onChangeHandler}
             />
+            {errors.password && (
+              <span className="invalid-tooltip ml-4">{errors.password}</span>
+            )}
           </div>
         </div>
-        <div className="form-group">
+
+        <div
+          className={classnames("form-group", {
+            "has-danger": errors.name
+          })}
+        >
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -160,6 +163,11 @@ class RegisterForm extends Component {
               value={this.state.confirmPassword}
               onChange={this.onChangeHandler}
             />
+            {errors.confirmPassword && (
+              <span className="invalid-tooltip ml-4">
+                {errors.confirmPassword}
+              </span>
+            )}
           </div>
         </div>
         <div className="from-group text-center ">
