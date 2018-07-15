@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { registerUser } from "../../../redux/actions/authActions";
+import { connect } from "react-redux";
+import { loginUser } from "../../../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
@@ -50,10 +50,10 @@ class LoginForm extends Component {
    * then matches it with the current error object in component state.
    * @memberof RegisterForm
    */
-  static getDerivedStateFromProps({ errors }) {
-    return {
-      errors
-    };
+  static getDerivedStateFromProps(nextprops) {
+    this.setState({
+      errors: nextprops.ServerErrors
+    });
   }
 
   render() {
@@ -133,9 +133,14 @@ LoginForm.propTypes = {
 
 // Get the auth state from the root reducer (redux/reducers)
 // to this Register component
-// const mapStateToProps = state => ({
-//   auth: state.auth,
-//   errors: state.errors
-// });
+const mapStateToProps = state => ({
+  auth: state.auth,
+  ServerErrors: state.errors
+});
 
-export default withRouter(LoginForm);
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(withRouter(LoginForm));
+
+// export default withRouter(LoginForm);
