@@ -90,9 +90,7 @@ router.post("/login", (req, res) => {
   // Check if the user already exist through their email
   User.findOne({ email }).then(user => {
     if (!user) {
-      return res
-        .status(404)
-        .json({ LoginError: "email or password is incorrect" });
+      return res.status(404).json({ email: "email or password is incorrect" });
     }
     // Check if passowrd is the same as the one in database.
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -110,7 +108,7 @@ router.post("/login", (req, res) => {
       } else {
         return res
           .status(400)
-          .json({ LoginError: "email or password is incorrect" });
+          .json({ password: "email or password is incorrect" });
       }
     });
   });
