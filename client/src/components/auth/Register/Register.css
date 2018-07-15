@@ -13,6 +13,9 @@
   width: 100px;
 }
 
+.invalid-feedback {
+  font-size: inherit;
+}
 /* .register::before {
   content: "";
   position: absolute;

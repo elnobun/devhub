@@ -88,7 +88,7 @@ class RegisterForm extends Component {
               onChange={this.onChangeHandler}
             />
             {errors.name && (
-              <span className="invalid-tooltip ml-4">{errors.name}</span>
+              <span className="invalid-feedback mt-3 ml-4">{errors.name}</span>
             )}
           </div>
         </div>
@@ -114,14 +114,14 @@ class RegisterForm extends Component {
               onChange={this.onChangeHandler}
             />
             {errors.email && (
-              <span className="invalid-tooltip ml-4">{errors.email}</span>
+              <span className="invalid-feedback mt-3 ml-4">{errors.email}</span>
             )}
           </div>
         </div>
 
         <div
           className={classnames("form-group", {
-            "has-danger": errors.name
+            "has-danger": errors.password
           })}
         >
           <div className="input-group">
@@ -132,21 +132,25 @@ class RegisterForm extends Component {
             </div>
             <input
               type="password"
-              className="form-control form-control-lg"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.password
+              })}
               placeholder="Password..."
               name="password"
               value={this.state.password}
               onChange={this.onChangeHandler}
             />
             {errors.password && (
-              <span className="invalid-tooltip ml-4">{errors.password}</span>
+              <span className="invalid-feedback mt-3 ml-4">
+                {errors.password}
+              </span>
             )}
           </div>
         </div>
 
         <div
           className={classnames("form-group", {
-            "has-danger": errors.name
+            "has-danger": errors.confirmPassword
           })}
         >
           <div className="input-group">
@@ -157,14 +161,16 @@ class RegisterForm extends Component {
             </div>
             <input
               type="password"
-              className="form-control form-control-lg"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.confirmPassword
+              })}
               placeholder="Confirm Password..."
               name="confirmPassword"
               value={this.state.confirmPassword}
               onChange={this.onChangeHandler}
             />
             {errors.confirmPassword && (
-              <span className="invalid-tooltip ml-4">
+              <span className="invalid-feedback mt-3 ml-4">
                 {errors.confirmPassword}
               </span>
             )}
