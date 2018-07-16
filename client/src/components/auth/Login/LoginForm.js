@@ -43,7 +43,7 @@ class LoginForm extends Component {
    * Persist the redux error to the error object in component state.
    * This lifecycle gets the error props that is contained in the store,
    * then matches it with the current error object in component state.
-   * @memberof RegisterForm
+   * @memberof LoginForm
    */
   static getDerivedStateFromProps({ errors, auth, history }) {
     if (auth.isAuthenticated) {
