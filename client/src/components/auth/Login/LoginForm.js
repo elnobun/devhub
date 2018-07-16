@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { loginUser } from "../../../redux/actions/authActions";
-import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
 class LoginForm extends Component {
   // Initialize default state of the register form
   state = {
     email: "",
     password: "",
-    disabled: false,
     errors: {}
   };
 
@@ -32,7 +27,7 @@ class LoginForm extends Component {
     e.preventDefault();
 
     const { email, password, errors } = this.state;
-    const user = {
+    const userData = {
       email,
       password
     };
@@ -40,7 +35,7 @@ class LoginForm extends Component {
 
     // Submit to database, and redirect user to login page from redux
     if (isValid) {
-      this.props.loginUser(user, this.props.history);
+      this.props.loginUser(userData);
     }
   };
 
@@ -50,7 +45,10 @@ class LoginForm extends Component {
    * then matches it with the current error object in component state.
    * @memberof RegisterForm
    */
-  static getDerivedStateFromProps({ errors }) {
+  static getDerivedStateFromProps({ errors, auth, history }) {
+    if (auth.isAuthenticated) {
+      history.push("/dashboard");
+    }
     return {
       errors
     };
@@ -58,7 +56,6 @@ class LoginForm extends Component {
 
   render() {
     const { errors } = this.state;
-    // const isEnabled = this.canBeSubmitted();
 
     return (
       <form onSubmit={this.onSubmitHandler}>
@@ -84,10 +81,11 @@ class LoginForm extends Component {
               onChange={this.onChangeHandler}
             />
             {errors.email && (
-              <span className="invalid-tooltip ml-4">{errors.email}</span>
+              <span className="invalid-feedback mt-3 ml-4">{errors.email}</span>
             )}
           </div>
         </div>
+
         <div
           className={classnames("form-group", {
             "has-danger": errors.password
@@ -110,7 +108,9 @@ class LoginForm extends Component {
               onChange={this.onChangeHandler}
             />
             {errors.password && (
-              <span className="invalid-tooltip ml-4">{errors.password}</span>
+              <span className="invalid-feedback mt-3 ml-4">
+                {errors.password}
+              </span>
             )}
           </div>
         </div>
@@ -128,11 +128,4 @@ class LoginForm extends Component {
   }
 }
 
-// PropTypes for Register Form
-LoginForm.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
-
-export default withRouter(LoginForm);
+export default LoginForm;
