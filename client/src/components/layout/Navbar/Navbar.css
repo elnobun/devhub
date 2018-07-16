@@ -10,3 +10,7 @@
 #home .bg-primary {
   background-color: rgb(41, 75, 128) !important;
 }
+
+#home img {
+  width: 25px;
+}

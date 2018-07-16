@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../../redux/actions/authActions";
 
 import "./Navbar.css";
 
@@ -31,18 +34,57 @@ class Navbar extends Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
 
+  onLogout = e => {
+    const { logoutUser } = this.props;
+    e.preventDefault();
+    logoutUser();
+  };
+
   render() {
     const { isEnabled } = this.state;
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      <ul className="nav navbar-nav ml-auto">
+        <li className="nav-item">
+          <a href="" className="nav-link mr-auto icon" onClick={this.onLogout}>
+            <img
+              src={user.avatar}
+              alt={user.name}
+              title="gravatar image"
+              className="rounded-circle"
+            />&nbsp; LOGOUT
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul className="nav navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link className="nav-link mr-auto icon" to="/login">
+            <i className="material-icons">fingerprint</i>&nbsp; LOGIN
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link icon" to="/register">
+            <i className="material-icons">person_add</i>&nbsp; SIGNUP
+          </Link>
+        </li>
+      </ul>
+    );
+
+    const noauth = isEnabled
+      ? "navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent"
+      : "navbar navbar-expand-lg fixed-top navbar-light bg-light";
+
+    const authHeader = isEnabled
+      ? "navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent"
+      : "navbar navbar-expand-lg fixed-top navbar-dark bg-primary ";
+
     return (
       <div id="home">
-        <nav
-          ref="inner"
-          className={`${
-            isEnabled
-              ? "navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent"
-              : "navbar navbar-expand-lg fixed-top navbar-light bg-light"
-          }`}
-        >
+        <nav ref="inner" className={isAuthenticated ? authHeader : noauth}>
           <div className="container">
             <Link className="navbar-brand" to="/">
               DevelopersHub
@@ -67,19 +109,7 @@ class Navbar extends Component {
                   </Link>
                 </li>
               </ul>
-
-              <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link mr-auto icon" to="/login">
-                    <i className="material-icons">fingerprint</i>&nbsp; LOGIN
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link icon" to="/register">
-                    <i className="material-icons">person_add</i>&nbsp; SIGNUP
-                  </Link>
-                </li>
-              </ul>
+              {isAuthenticated ? authLinks : guestLinks}
             </div>
           </div>
         </nav>
@@ -88,4 +118,16 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapSateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapSateToProps,
+  { logoutUser }
+)(Navbar);

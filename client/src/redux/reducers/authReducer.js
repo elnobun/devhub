@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
-        user: action.pay
+        user: action.payload
       };
 
     // Default state

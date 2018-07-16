@@ -54,7 +54,10 @@ class RegisterForm extends Component {
    * then matches it with the current error object in component state.
    * @memberof RegisterForm
    */
-  static getDerivedStateFromProps({ errors }) {
+  static getDerivedStateFromProps({ errors, auth, history }) {
+    if (auth.isAuthenticated) {
+      history.push("/dashboard");
+    }
     return {
       errors
     };
