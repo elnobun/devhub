@@ -77,7 +77,7 @@ class RegisterForm extends Component {
         >
           <TextField
             icon="person"
-            type="name"
+            type="text"
             name="name"
             placeholder="Name..."
             value={this.state.name}
@@ -111,7 +111,7 @@ class RegisterForm extends Component {
             icon="lock"
             type="password"
             name="password"
-            placeholder="**********"
+            placeholder="password"
             value={this.state.password}
             onChange={this.onChangeHandler}
             error={errors.password}
@@ -126,8 +126,8 @@ class RegisterForm extends Component {
           <TextField
             icon="lock_outline"
             type="password"
-            name="password"
-            placeholder="**********"
+            name="confirmPassword"
+            placeholder="confirm password"
             value={this.state.confirmPassword}
             onChange={this.onChangeHandler}
             error={errors.confirmPassword}
