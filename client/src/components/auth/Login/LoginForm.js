@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import TextField from "../../common/TextField";
 
 class LoginForm extends Component {
   // Initialize default state of the register form
@@ -64,26 +65,15 @@ class LoginForm extends Component {
             "has-danger": errors.email
           })}
         >
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">email</i>
-              </span>
-            </div>
-            <input
-              type="email"
-              className={classnames("form-control form-control-lg", {
-                "is-invalid": errors.email
-              })}
-              placeholder="Email..."
-              name="email"
-              value={this.state.email}
-              onChange={this.onChangeHandler}
-            />
-            {errors.email && (
-              <span className="invalid-feedback mt-3 ml-4">{errors.email}</span>
-            )}
-          </div>
+          <TextField
+            icon="email"
+            type="email"
+            name="email"
+            placeholder="example@example.com"
+            value={this.state.email}
+            onChange={this.onChangeHandler}
+            error={errors.email}
+          />
         </div>
 
         <div
@@ -91,28 +81,15 @@ class LoginForm extends Component {
             "has-danger": errors.password
           })}
         >
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">lock</i>
-              </span>
-            </div>
-            <input
-              type="password"
-              className={classnames("form-control form-control-lg", {
-                "is-invalid": errors.password
-              })}
-              placeholder="Password..."
-              name="password"
-              value={this.state.password}
-              onChange={this.onChangeHandler}
-            />
-            {errors.password && (
-              <span className="invalid-feedback mt-3 ml-4">
-                {errors.password}
-              </span>
-            )}
-          </div>
+          <TextField
+            icon="lock"
+            type="password"
+            name="password"
+            placeholder="***************"
+            value={this.state.password}
+            onChange={this.onChangeHandler}
+            error={errors.password}
+          />
         </div>
 
         <div className="from-group text-center ">
