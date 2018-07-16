@@ -94,7 +94,7 @@ class RegisterForm extends Component {
         </div>
         <div
           className={classnames("form-group", {
-            "has-danger": errors.name
+            "has-danger": errors.email
           })}
         >
           <div className="input-group">

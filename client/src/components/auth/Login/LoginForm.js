@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { loginUser } from "../../../redux/actions/authActions";
+// import { connect } from "react-redux";
+// import { loginUser } from "../../../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
@@ -32,7 +32,7 @@ class LoginForm extends Component {
     e.preventDefault();
 
     const { email, password, errors } = this.state;
-    const newUser = {
+    const user = {
       email,
       password
     };
@@ -40,7 +40,7 @@ class LoginForm extends Component {
 
     // Submit to database, and redirect user to login page from redux
     if (isValid) {
-      this.props.loginUser(newUser, this.props.history);
+      this.props.loginUser(user, this.props.history);
     }
   };
 
@@ -50,10 +50,10 @@ class LoginForm extends Component {
    * then matches it with the current error object in component state.
    * @memberof RegisterForm
    */
-  static getDerivedStateFromProps(nextprops) {
-    this.setState({
-      errors: nextprops.ServerErrors
-    });
+  static getDerivedStateFromProps({ errors }) {
+    return {
+      errors
+    };
   }
 
   render() {
@@ -64,7 +64,7 @@ class LoginForm extends Component {
       <form onSubmit={this.onSubmitHandler}>
         <div
           className={classnames("form-group", {
-            "has-danger": errors.name
+            "has-danger": errors.email
           })}
         >
           <div className="input-group">
@@ -75,7 +75,9 @@ class LoginForm extends Component {
             </div>
             <input
               type="email"
-              className="form-control form-control-lg"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.email
+              })}
               placeholder="Email..."
               name="email"
               value={this.state.email}
@@ -88,7 +90,7 @@ class LoginForm extends Component {
         </div>
         <div
           className={classnames("form-group", {
-            "has-danger": errors.name
+            "has-danger": errors.password
           })}
         >
           <div className="input-group">
@@ -99,7 +101,9 @@ class LoginForm extends Component {
             </div>
             <input
               type="password"
-              className="form-control form-control-lg"
+              className={classnames("form-control form-control-lg", {
+                "is-invalid": errors.password
+              })}
               placeholder="Password..."
               name="password"
               value={this.state.password}
@@ -131,16 +135,4 @@ LoginForm.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-// Get the auth state from the root reducer (redux/reducers)
-// to this Register component
-const mapStateToProps = state => ({
-  auth: state.auth,
-  ServerErrors: state.errors
-});
-
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(withRouter(LoginForm));
-
-// export default withRouter(LoginForm);
+export default withRouter(LoginForm);
