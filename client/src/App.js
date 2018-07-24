@@ -5,7 +5,7 @@ import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer/Footer";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/auth/Dashboard/Dashboard";
 import PrivateRoute from "./components/common/PrivateRoute";
 import "./App.css";
 

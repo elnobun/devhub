@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../redux/actions/profileActions";
+import { getCurrentProfile } from "../../../redux/actions/profileActions";
 import PropTypes from "prop-types";
-import Loading from "../common/loading";
+import Loading from "../../common/Loading";
 
 import "./Dashboard.css";
 
@@ -42,12 +42,14 @@ class Dahsboard extends Component {
     }
 
     return (
-      <div id="dashboard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="dispay-4">Dashboard</h1>
-              {dashboard}
+      <div>
+        <div id="dashboard">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="dispay-4">Dashboard</h1>
+                {dashboard}
+              </div>
             </div>
           </div>
         </div>
