@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../redux/actions/authActions";
+import { clearCurrentProfile } from "../../../redux/actions/profileActions";
 
 import "./Navbar.css";
 
@@ -13,17 +14,14 @@ class Navbar extends Component {
 
   handleScroll = e => {
     e.preventDefault();
-    const navbar = this.refs.inner;
-    if (navbar) {
+    if (this.refs.inner) {
       if (window.scrollY > 50) {
         this.setState({ isEnabled: true });
       } else {
         this.setState({ isEnabled: false });
       }
     }
-    this.setState({
-      isEnabled: !this.state.isEnabled
-    });
+    this.setState({ isEnabled: !this.state.isEnabled });
   };
 
   componentDidMount() {
@@ -35,9 +33,9 @@ class Navbar extends Component {
   }
 
   onLogout = e => {
-    const { logoutUser } = this.props;
     e.preventDefault();
-    logoutUser();
+    this.props.clearCurrentProfile();
+    this.props.logoutUser();
   };
 
   render() {
@@ -79,8 +77,8 @@ class Navbar extends Component {
       : "navbar navbar-expand-lg fixed-top navbar-light bg-light";
 
     const authHeader = isEnabled
-      ? "navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent"
-      : "navbar navbar-expand-lg fixed-top navbar-dark bg-primary ";
+      ? "navbar navbar-expand-lg fixed-top navbar-light navbar-transparent"
+      : "navbar navbar-expand-lg fixed-top navbar-dark bg-primary";
 
     return (
       <div id="home">
@@ -119,8 +117,9 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
+  auth: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  clearCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapSateToProps = state => ({
@@ -129,5 +128,5 @@ const mapSateToProps = state => ({
 
 export default connect(
   mapSateToProps,
-  { logoutUser }
+  { logoutUser, clearCurrentProfile }
 )(Navbar);

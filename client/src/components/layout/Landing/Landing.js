@@ -4,11 +4,22 @@ import { connect } from "react-redux";
 import "./Landing.css";
 
 class Landing extends Component {
-  static getDerivedStateFromProps({ auth, history }) {
-    if (auth.isAuthenticated) {
-      history.push("/dashboard");
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
     }
   }
+
+  // static getDerivedStateFromProps({ auth, history, errors }) {
+  //   if (auth.isAuthenticated) {
+  //     history.push("/dashboard");
+  //   }
+  //   if (errors) {
+  //     this.setState({
+  //       errors
+  //     });
+  //   }
+  // }
 
   render() {
     return (

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { registerUser } from "../../../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 import TextField from "../../common/TextField";
 
 class RegisterForm extends Component {
@@ -48,6 +45,12 @@ class RegisterForm extends Component {
       this.props.registerUser(newUser, this.props.history);
     }
   };
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
   /**
    * Persist the redux error to the error object in component state.
@@ -146,19 +149,5 @@ class RegisterForm extends Component {
     );
   }
 }
-
-// PropTypes for Register Form
-RegisterForm.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
-
-// Get the auth state from the root reducer (redux/reducers)
-// to this Register component
-// const mapStateToProps = state => ({
-//   auth: state.auth,
-//   errors: state.errors
-// });
 
 export default withRouter(RegisterForm);

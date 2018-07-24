@@ -40,6 +40,12 @@ class LoginForm extends Component {
     }
   };
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   /**
    * Persist the redux error to the error object in component state.
    * This lifecycle gets the error props that is contained in the store,

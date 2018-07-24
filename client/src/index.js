@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router } from "react-router-dom";
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
+import { clearCurrentProfile } from "./redux/actions/profileActions";
 import { Provider } from "react-redux";
 import setAuthToken from "./utils/setAuthToken";
 import store from "./redux/store";
@@ -24,7 +25,8 @@ if (localStorage.jwtToken) {
     // logout the user
     store.dispatch(logoutUser());
 
-    // Todo:clear current profile
+    // clear current profile
+    store.dispatch(clearCurrentProfile());
 
     // redirect to login
     window.location.href = "/login";
