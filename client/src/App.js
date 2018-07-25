@@ -6,6 +6,7 @@ import Login from "./components/auth/Login/Login";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer/Footer";
 import Dashboard from "./components/auth/Dashboard/Dashboard";
+import CreateProfile from "./components/auth/CreateProfile/CreateProfile";
 import PrivateRoute from "./components/common/PrivateRoute";
 import "./App.css";
 
@@ -19,6 +20,13 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        </Switch>
+        <Switch>
+          <PrivateRoute
+            exact
+            path="/create-profile"
+            component={CreateProfile}
+          />
         </Switch>
         <Footer />
       </div>

@@ -8,7 +8,6 @@ export default (state = initialError, action) => {
     // get errors
     case GET_ERRORS:
       return action.payload;
-
     // default error state
     default:
       return state;

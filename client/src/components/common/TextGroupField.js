@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const TextField = ({
+const TextGroupField = ({
   type,
   name,
   label,
@@ -11,16 +11,10 @@ const TextField = ({
   onChange,
   error,
   info,
-  icon,
   disabled
 }) => {
   return (
-    <div className="input-group mb-3">
-      <div className="input-group-prepend">
-        <span className="input-group-text">
-          <i className="material-icons">{icon}</i>
-        </span>
-      </div>
+    <Fragment>
       <input
         type={type}
         className={classnames("form-control form-control-lg", {
@@ -34,24 +28,23 @@ const TextField = ({
       />
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <span className="invalid-feedback mt-3 ml-4">{error}</span>}
-    </div>
+    </Fragment>
   );
 };
 
-TextField.propTypes = {
+TextGroupField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  icon: PropTypes.string,
   error: PropTypes.string,
   info: PropTypes.string,
   disabled: PropTypes.string
 };
 
-TextField.defaultProps = {
+TextGroupField.defaultProps = {
   type: "text"
 };
 
-export default TextField;
+export default TextGroupField;
